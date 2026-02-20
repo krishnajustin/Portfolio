@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Venkat Krishna Reddy — Engineer · Trader · Financier</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --border: #ffffff0f;
+      --text: #e8e8f0;
+      --muted: #7070a0;
+      --accent: #00d4ff;
+      --accent2: #7c3aed;
+      --accent3: #10b981;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --gradient: linear-gradient(135deg, #00d4ff, #7c3aed);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Cash Cursor */
+    #cashCursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 24px;
+      line-height: 1;
+      transform: translate(-4px, -4px);
+      filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.9));
+      transition: transform 0.1s ease;
+      user-select: none;
+    }
+
+    #cashRing {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      opacity: 0.3;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent2);
+      border-radius: 2px;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.95), transparent);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 5rem;
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-name .line2 {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-roles {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .role-badge {
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .role-badge.eng {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+    }
+
+    .role-badge.lead {
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+      border: 1px solid rgba(124, 58, 237, 0.25);
+    }
+
+    .role-badge.money {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--gold);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .role-badge.trade {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent3);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .hero-desc {
+      margin-top: 2rem;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 480px;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-desc span {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .btn {
+      padding: 0.85rem 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-right {
+      position: relative;
+      z-index: 2;
+      padding-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    /* Profile Image Style */
+    .profile-frame {
+      width: 240px;
+      height: 320px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      position: relative;
+      animation: slideLeft 0.8s 0.2s ease both;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(30%) contrast(110%);
+      opacity: 0.9;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .profile-frame:hover img {
+      filter: grayscale(0%) contrast(100%);
+      opacity: 1;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.75rem;
+      border-radius: 4px;
+      width: 240px;
+      animation: slideLeft 0.8s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+    }
+
+    .stat-card.s1::before {
+      background: var(--accent);
+    }
+
+    .stat-card.s2::before {
+      background: var(--gold);
+    }
+
+    .stat-card.s3::before {
+      background: var(--accent3);
+    }
+
+    .stat-card.s4::before {
+      background: #a78bfa;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes slideLeft {
+      from {
+        opacity: 0;
+        transform: translateX(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8)
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    /* About */
+    .about {
+      background: var(--surface);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+
+    .about-text p {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p span {
+      color: var(--text);
+    }
+
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pillar {
+      padding: 1.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .pillar:hover {
+      border-color: var(--accent);
+    }
+
+    .pillar-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* Lending Section Styles */
+    .finance {
+      background: var(--bg);
+    }
+
+    .finance-inner {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .finance-card {
+      padding: 2.5rem;
+      background: var(--surface);
+      border: 1px solid rgba(245, 158, 11, 0.22);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finance-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .finance-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .finance-tagline {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+
+    .finance-desc {
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .finance-desc span {
+      color: var(--text);
+    }
+
+    .finance-action {
+      margin-top: 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .finance-action::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .finance-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .fi-item {
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .fi-item:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .fi-item h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--gold);
+    }
+
+    .fi-item p {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      border-radius: 4px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .skill-group:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 212, 255, 0.2);
+    }
+
+    .skill-group h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      font-size: 0.7rem;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Experience */
+    .experience {
+      background: var(--surface);
+    }
+
+    .timeline {
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .tl-item {
+      padding-left: 2.5rem;
+      padding-bottom: 3rem;
+      position: relative;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: -5px;
+      top: 5px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+
+    .tl-dot.blue {
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .tl-dot.gold {
+      background: var(--gold);
+      box-shadow: 0 0 14px var(--gold);
+    }
+
+    .tl-date {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-date.blue {
+      color: var(--accent);
+    }
+
+    .tl-date.gold {
+      color: var(--gold);
+    }
+
+    .tl-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+
+    .tl-company {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .tl-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .tl-badge.green {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent3);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .tl-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tl-bullet {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .tl-bullet::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+
+    /* Project Image Style */
+    .project-img-slot {
+      width: 100%;
+      height: 180px;
+      background: var(--surface2);
+      margin-bottom: 1.5rem;
+      border-radius: 2px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .project-img-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .project-card:hover .project-img-slot img {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .project-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .project-tag.api {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--accent);
+    }
+
+    .project-tag.iot {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent3);
+    }
+
+    .project-tag.cloud {
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+    }
+
+    .project-tag.tool {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold);
+    }
+
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.65;
+    }
+
+    .project-metric {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.7rem;
+      color: var(--accent3);
+    }
+
+    /* Trading */
+    .trading {
+      background: var(--surface);
+    }
+
+    .trading-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      align-items: start;
+    }
+
+    .trading-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 4px;
+    }
+
+    .trading-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Trading Image Style */
+    .trading-visual {
+      width: 100%;
+      height: 200px;
+      background: var(--surface);
+      margin-bottom: 1.5rem;
+      border-radius: 2px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .trading-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .trading-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .trading-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 2px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .trading-item:hover {
+      border-color: var(--border);
+    }
+
+    .t-icon {
+      font-size: 1.1rem;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .t-info strong {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .t-info span {
+      color: var(--muted);
+      font-size: 0.7rem;
+    }
+
+    /* Ticker */
+    .ticker-wrap {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.9rem 0;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .ticker-inner {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 22s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .ticker-item .sym {
+      color: var(--accent);
+    }
+
+    .ticker-item .val {
+      color: var(--text);
+    }
+
+    .ticker-item .up {
+      color: var(--accent3);
+    }
+
+    .ticker-item .down {
+      color: var(--red);
+    }
+
+    /* Achievements */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .ach-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .ach-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .ach-label {
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--surface);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent);
+    }
+
+    .c-icon {
+      font-size: 1.25rem;
+    }
+
+    .c-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .c-val {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 1rem;
+      border-radius: 2px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+      cursor: none;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+    }
+
+    /* Message Box */
+    #messageBox {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--surface2);
+      border: 1px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      display: none;
+      max-width: 320px;
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    #messageBox h4 {
+      font-family: 'Syne', sans-serif;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    #messageBox p {
+      font-size: 0.8rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 3rem;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer span {
+      color: var(--muted);
+      font-size: 0.7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.7rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media(max-width:900px) {
+      nav {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+      }
+
+      .hero-right {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .stat-card,
+      .profile-frame {
+        width: auto;
+        flex: 1 1 180px;
+      }
+
+      .profile-frame {
+        height: 280px;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .about-grid,
+      .trading-grid,
+      .contact-grid,
+      .finance-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .divider {
+        margin: 0 1.5rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 💵 Cash Cursor -->
+  <div id="cashCursor">💵</div>
+  <div id="cashRing"></div>
+
+  <!-- Custom Notification UI -->
+  <div id="messageBox">
+    <h4>Message Sent</h4>
+    <p>Thanks for reaching out! I'll get back to you shortly regarding your inquiry.</p>
+    <button class="btn btn-outline" style="width:100%; padding: 0.5rem;" onclick="closeMsg()">Close</button>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">SVK Reddy</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#finance">Financing</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#trading">Trading</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <h1 class="hero-name">
+        Sai Venkat<br>
+        <span class="line2">Krishna Reddy</span>
+      </h1>
+      <div class="hero-roles">
+        <span class="role-badge eng">Assoc. Technical Lead</span>
+        <span class="role-badge lead">Full-Stack Engineer</span>
+        <span class="role-badge trade">Trader</span>
+        <span class="role-badge money">Financier</span>
+      </div>
+      <p class="hero-desc">
+        Engineering leader driving <span>scalable systems</span> and <span>technical strategy</span>. Associate
+        Technical Lead at ASZ Technologies. Private financier and market enthusiast.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        <a href="#experience" class="btn btn-outline">View Experience</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!-- Profile Image Slot -->
+      <div class="profile-frame">
+        <img src="https://via.placeholder.com/400x530/1a1a26/e8e8f0?text=Profile+Image" alt="Sai Venkat Krishna Reddy">
+      </div>
+      <div class="stat-card s1">
+        <div class="stat-num" style="color:var(--accent)">3+</div>
+        <div class="stat-label">Years Engineering</div>
+      </div>
+      <div class="stat-card s2">
+        <div class="stat-num" style="color:var(--gold)">₹ Selective</div>
+        <div class="stat-label">Personal Lending</div>
+      </div>
+      <div class="stat-card s3">
+        <div class="stat-num" style="color:var(--accent3)">99.9%</div>
+        <div class="stat-label">Uptime Maintained</div>
+      </div>
+      <div class="stat-card s4">
+        <div class="stat-num" style="color:#a78bfa">10+</div>
+        <div class="stat-label">APIs Built</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section-label">01 / About</div>
+    <h2 class="section-title">Engineer. Leader.<br>Private Financier.</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          I'm <span>Sai Venkat Krishna Reddy</span>, a software engineering leader based in Hyderabad. I currently serve
+          as <span>Associate Technical Lead</span> at ASZ Technologies, where I lead high-impact engineering teams.
+        </p>
+        <p>
+          With experience across <span>ASP.NET Core, Angular, and Azure</span>, I specialize in building distributed
+          systems that are as reliable as they are performant. I enjoy translating business needs into elegant technical
+          architecture.
+        </p>
+        <p>
+          Beyond tech, I am deeply involved in the <span>financial ecosystem</span>. I actively trade in the Indian
+          equity markets and provide <span>interest-based financing</span> for vetted opportunities. I believe in the
+          power of capital when paired with disciplined risk management.
+        </p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🏗️</div>
+          <h3>Technical Leadership</h3>
+          <p>Leading by example through architecture design, code excellence, and mentoring to deliver high-availability
+            software products.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">💸</div>
+          <h3>Personal Lending</h3>
+          <p>Providing private liquidity services exclusively to personally known individuals. Focused on strategic
+            capital allocation and reliable returns.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📊</div>
+          <h3>Market Trading</h3>
+          <p>A personal passion for the stock market—leveraging technical analysis and systematic setups to navigate the
+            Indian equities space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Private Finance -->
+  <section class="finance" id="finance">
+    <div class="section-label">02 / Private Finance</div>
+    <h2 class="section-title">Selective Lending</h2>
+    <div class="finance-inner reveal">
+      <div class="finance-card">
+        <div class="finance-title">Personal Finance</div>
+        <div class="finance-tagline">Selective · Interest · Trusted</div>
+        <p class="finance-desc">
+          I provide private <span>liquidity solutions</span> through interest-based lending, exclusively available to
+          <span>personally known and vetted individuals</span>. This is a highly selective service focused on assisting
+          trusted contacts with short-term capital needs.
+        </p>
+        <p class="finance-desc" style="margin-top:1rem">
+          Every opportunity is evaluated through a personal <span>risk-assessment lens</span>, ensuring that the
+          deployment of capital remains secure while fostering mutual financial growth.
+        </p>
+        <div class="finance-action">● Lending to Trusted Individuals</div>
+      </div>
+      <div class="finance-list">
+        <div class="fi-item">
+          <h4>🤝 Personal Network Only</h4>
+          <p>Providing capital solutions strictly to a closed circle of personally known individuals with clear
+            repayment expectations.</p>
+        </div>
+        <div class="fi-item">
+          <h4>⚖️ Interest-Based Capital</h4>
+          <p>Structuring private lending for interest, ensuring a professional financial arrangement within my personal
+            ecosystem.</p>
+        </div>
+        <div class="fi-item">
+          <h4>⚡ Tailored Liquidity</h4>
+          <p>Direct communication and flexible terms tailored to the specific needs of trusted partners and associates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-label">03 / Skills</div>
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <h3>⚡ Backend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">.NET 8</span>
+          <span class="skill-tag">ASP.NET Core</span>
+          <span class="skill-tag">Web API</span>
+          <span class="skill-tag">Entity Framework</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>🎨 Frontend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Angular 19</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Bootstrap</span>
+          <span class="skill-tag">Material UI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>🗃️ Databases</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL Server</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>🛠 Leadership</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Tech Strategy</span>
+          <span class="skill-tag">Mentoring</span>
+          <span class="skill-tag">Architecture</span>
+          <span class="skill-tag">Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Experience -->
+  <section class="experience" id="experience">
+    <div class="section-label">04 / Experience</div>
+    <h2 class="section-title">Work History</h2>
+    <div class="timeline reveal">
+
+      <!-- Role 1: Assoc Tech Lead -->
+      <div class="tl-item">
+        <div class="tl-dot gold"></div>
+        <div class="tl-date gold">2025 — Present</div>
+        <div class="tl-role">Associate Technical Lead</div>
+        <div class="tl-company">ASZ Technologies Pvt. Ltd. · Bangalore/Remote</div>
+        <div class="tl-badge green">● Current Position</div>
+        <div class="tl-items">
+          <div class="tl-bullet">Leading technical direction across multiple client engagements—owning architecture
+            decisions and acting as the primary point of contact for stakeholders.</div>
+          <div class="tl-bullet">Mentoring engineers through code reviews and design sessions, significantly raising
+            team engineering standards.</div>
+          <div class="tl-bullet">Maintaining 99.9% uptime on critical client applications through proactive monitoring
+            and robust system design.</div>
+        </div>
+      </div>
+
+      <!-- Role 2: Software Engineer -->
+      <div class="tl-item">
+        <div class="tl-dot blue"></div>
+        <div class="tl-date blue">2022 — 2025</div>
+        <div class="tl-role">Software Engineer</div>
+        <div class="tl-company">ASZ Technologies Pvt. Ltd. · Bangalore, India</div>
+        <div class="tl-items">
+          <div class="tl-bullet">Designed and implemented 10+ RESTful Web APIs in .NET, supporting platforms with 5,000+
+            active users.</div>
+          <div class="tl-bullet">Optimized SQL Server indexing and query performance, improving data-retrieval times by
+            50%.</div>
+          <div class="tl-bullet">Built and deployed critical IoT reporting modules for Senoko VMS, ensuring real-time
+            reliability.</div>
+          <div class="tl-bullet">Orchestrated migration of legacy .NET 6 applications to .NET 8 with zero downtime.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-label">05 / Projects</div>
+    <h2 class="section-title">Notable Work</h2>
+    <div class="projects-grid reveal">
+      <div class="project-card">
+        <div class="project-img-slot">
+          <img src="https://via.placeholder.com/600x350/1a1a26/00d4ff?text=API+Architecture" alt="Project Thumbnail">
+        </div>
+        <span class="project-tag api">REST API</span>
+        <h3>Digital Marketing APIs</h3>
+        <p>High-throughput Web APIs built on .NET 8, handling complex marketing data and analytics for thousands of
+          concurrent users.</p>
+        <div class="project-metric">⚡ 50% faster data retrieval</div>
+      </div>
+      <div class="project-card">
+        <div class="project-img-slot">
+          <img src="https://via.placeholder.com/600x350/1a1a26/10b981?text=IoT+Monitoring" alt="Project Thumbnail">
+        </div>
+        <span class="project-tag iot">IoT · .NET</span>
+        <h3>Senoko VMS — Fire Drill</h3>
+        <p>Critical reporting module for Singapore's Senoko VMS, engineered for high reliability in mission-critical
+          environments.</p>
+        <div class="project-metric">🔥 30% increase in engagement</div>
+      </div>
+      <div class="project-card">
+        <div class="project-img-slot">
+          <img src="https://via.placeholder.com/600x350/1a1a26/7c3aed?text=Cloud+Storage" alt="Project Thumbnail">
+        </div>
+        <span class="project-tag cloud">Azure · Storage</span>
+        <h3>Photo Kiosk Digitization</h3>
+        <p>Azure-hosted APIs integrated with MinIO storage for highly efficient, scalable image management and
+          retrieval.</p>
+        <div class="project-metric">🖼️ 25% reduction in latency</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Trading -->
+  <section class="trading" id="trading">
+    <div class="section-label">06 / Trading & Markets</div>
+    <h2 class="section-title">Market Analysis</h2>
+
+    <div class="ticker-wrap">
+      <div class="ticker-inner">
+        <div class="ticker-item"><span class="sym">NIFTY 50</span><span class="val">&nbsp;22,400&nbsp;</span><span
+            class="up">▲ +0.85%</span></div>
+        <div class="ticker-item"><span class="sym">SENSEX</span><span class="val">&nbsp;73,800&nbsp;</span><span
+            class="up">▲ +0.72%</span></div>
+        <div class="ticker-item"><span class="sym">BANKNIFTY</span><span class="val">&nbsp;48,250&nbsp;</span><span
+            class="down">▼ -0.34%</span></div>
+        <div class="ticker-item"><span class="sym">USD/INR</span><span class="val">&nbsp;83.45&nbsp;</span><span
+            class="down">▼ -0.1%</span></div>
+        <!-- duplicate for seamless loop -->
+        <div class="ticker-item"><span class="sym">NIFTY 50</span><span class="val">&nbsp;22,400&nbsp;</span><span
+            class="up">▲ +0.85%</span></div>
+        <div class="ticker-item"><span class="sym">SENSEX</span><span class="val">&nbsp;73,800&nbsp;</span><span
+            class="up">▲ +0.72%</span></div>
+      </div>
+    </div>
+
+    <div class="trading-grid reveal">
+      <div class="trading-card">
+        <div class="trading-visual">
+          <img src="https://via.placeholder.com/500x300/1a1a26/f59e0b?text=Market+Chart" alt="Trading Chart">
+        </div>
+        <h3>📈 Trading Strategy</h3>
+        <div class="trading-items">
+          <div class="trading-item">
+            <div class="t-icon">🇮🇳</div>
+            <div class="t-info"><strong>Indian Equities</strong><span>NSE / BSE — Intraday & Swing</span></div>
+          </div>
+          <div class="trading-item">
+            <div class="t-icon">📊</div>
+            <div class="t-info"><strong>Technical Analysis</strong><span>Price action & systematic setups</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="trading-card">
+        <h3>🖥️ FinTech Mindset</h3>
+        <p style="color:var(--muted);font-size:0.83rem;line-height:1.8;">
+          My engineering background allows me to approach markets with structured rules and data-driven discipline,
+          stripping away the emotion from trading.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-label">07 / Contact</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="contact-grid reveal">
+      <div>
+        <p
+          style="color:var(--muted);font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;line-height:1.8;margin-bottom:2rem">
+          Reach out for technical leadership, collaboration, or inquiries regarding private finance opportunities.
+        </p>
+        <div class="contact-info">
+          <a href="mailto:saivenkatakrishnareddyp@gmail.com" class="contact-item">
+            <div class="c-icon">✉️</div>
+            <div class="c-val">saivenkatakrishnareddyp@gmail.com</div>
+          </a>
+          <a href="tel:+919581898403" class="contact-item">
+            <div class="c-icon">📞</div>
+            <div class="c-val">+91-95818-98403</div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="userName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="userEmail" placeholder="john@company.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Topic</label>
+            <select id="userTopic">
+              <option value="">Select a topic...</option>
+              <option>Engineering / Lead Role</option>
+              <option>Personal Lending Inquiry</option>
+              <option>Market Discussion</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="userMsg" placeholder="How can I help you?"></textarea>
+          </div>
+          <button class="btn btn-primary" style="border:none;width:100%;padding:1rem;" onclick="sendForm()">
+            Send Message ▸
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Sai Venkat Krishna Reddy · Hyderabad, India 🇮🇳</span>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#finance">Financing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cashCursor = document.getElementById('cashCursor');
+    const cashRing = document.getElementById('cashRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cashCursor.style.left = mx + 'px';
+      cashCursor.style.top = my + 'px';
+    });
+
+    (function animateRing() {
+      rx += (mx - rx) * 0.13;
+      ry += (my - ry) * 0.13;
+      cashRing.style.left = rx + 'px';
+      cashRing.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+
+    // Cursor Hover Effects
+    document.querySelectorAll('a, button, .pillar, .skill-tag, .fi-item, .project-card, .trading-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cashCursor.style.transform = 'translate(-4px,-4px) scale(1.45) rotate(-12deg)';
+        cashRing.style.opacity = '0.7';
+      });
+      el.addEventListener('mouseleave', () => {
+        cashCursor.style.transform = 'translate(-4px,-4px) scale(1) rotate(0deg)';
+        cashRing.style.opacity = '0.3';
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+    // Form Handling
+    function sendForm() {
+      const box = document.getElementById('messageBox');
+      box.style.display = 'block';
+      // Reset form
+      document.getElementById('userName').value = '';
+      document.getElementById('userEmail').value = '';
+      document.getElementById('userTopic').value = '';
+      document.getElementById('userMsg').value = '';
+    }
+
+    function closeMsg() {
+      document.getElementById('messageBox').style.display = 'none';
+    }
+
+    // Nav highlight
+    const allSections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      allSections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+      navLinks.forEach(l => {
+        l.style.color = l.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+      });
+    });
+  </script>
+</body>
+
+</html>
