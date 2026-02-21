@@ -21,7 +21,7 @@
       --accent3: #10b981;
       --gold: #f59e0b;
       --red: #ef4444;
-      --gradient: linear-gradient(135deg, #00d4ff, #7c3aed);
+      --gradient: linear-gradient(135deg, #00d4ff, #7c3aed)
     }
 
     *,
@@ -29,11 +29,11 @@
     *::after {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      box-sizing: border-box
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: smooth
     }
 
     body {
@@ -41,10 +41,9 @@
       color: var(--text);
       font-family: 'DM Mono', monospace;
       overflow-x: hidden;
-      cursor: none;
+      cursor: none
     }
 
-    /* Cash Cursor */
     #cashCursor {
       position: fixed;
       top: 0;
@@ -54,9 +53,9 @@
       font-size: 24px;
       line-height: 1;
       transform: translate(-4px, -4px);
-      filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.9));
-      transition: transform 0.1s ease;
-      user-select: none;
+      filter: drop-shadow(0 0 8px rgba(245, 158, 11, .9));
+      transition: transform .1s ease;
+      user-select: none
     }
 
     #cashRing {
@@ -70,24 +69,23 @@
       pointer-events: none;
       z-index: 9998;
       transform: translate(-50%, -50%);
-      opacity: 0.3;
-      transition: opacity 0.2s, transform 0.15s;
+      opacity: .3;
+      transition: opacity .2s, transform .15s
     }
 
     ::-webkit-scrollbar {
-      width: 4px;
+      width: 4px
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--bg);
+      background: var(--bg)
     }
 
     ::-webkit-scrollbar-thumb {
       background: var(--accent2);
-      border-radius: 2px;
+      border-radius: 2px
     }
 
-    /* Nav */
     nav {
       position: fixed;
       top: 0;
@@ -98,297 +96,58 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.95), transparent);
-      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(10, 10, 15, .95), transparent);
+      backdrop-filter: blur(12px)
     }
 
     .nav-logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: 1.1rem;
-      letter-spacing: 0.05em;
+      letter-spacing: .05em;
       background: var(--gradient);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-text-fill-color: transparent
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
-      list-style: none;
+      gap: 2rem;
+      list-style: none
     }
 
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      font-size: .75rem;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      transition: color 0.2s;
+      transition: color .2s
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--accent)
     }
 
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .visitor-badge {
+      display: flex;
       align-items: center;
-      padding: 0 3rem;
-      position: relative;
-      overflow: hidden;
+      gap: .5rem;
+      background: rgba(0, 212, 255, .08);
+      border: 1px solid rgba(0, 212, 255, .2);
+      border-radius: 20px;
+      padding: .3rem .85rem;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      color: var(--accent)
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding-top: 5rem;
-    }
-
-    .hero-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(3rem, 5.5vw, 5rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      animation: fadeUp 0.8s 0.1s ease both;
-    }
-
-    .hero-name .line2 {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-roles {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
-
-    .role-badge {
-      padding: 0.35rem 0.9rem;
-      border-radius: 2px;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .role-badge.eng {
-      background: rgba(0, 212, 255, 0.1);
-      color: var(--accent);
-      border: 1px solid rgba(0, 212, 255, 0.25);
-    }
-
-    .role-badge.lead {
-      background: rgba(124, 58, 237, 0.1);
-      color: #a78bfa;
-      border: 1px solid rgba(124, 58, 237, 0.25);
-    }
-
-    .role-badge.money {
-      background: rgba(245, 158, 11, 0.12);
-      color: var(--gold);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-
-    .role-badge.trade {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--accent3);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-    }
-
-    .hero-desc {
-      margin-top: 2rem;
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.75;
-      max-width: 480px;
-      animation: fadeUp 0.8s 0.3s ease both;
-    }
-
-    .hero-desc span {
-      color: var(--text);
-      font-style: normal;
-    }
-
-    .hero-cta {
-      margin-top: 2.5rem;
-      display: flex;
-      gap: 1rem;
-      animation: fadeUp 0.8s 0.4s ease both;
-    }
-
-    .btn {
-      padding: 0.85rem 2rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.2s;
-      cursor: none;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: white;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .hero-right {
-      position: relative;
-      z-index: 2;
-      padding-top: 5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 1rem;
-    }
-
-    /* Profile Image Style */
-    .profile-frame {
-      width: 240px;
-      height: 320px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-      position: relative;
-      animation: slideLeft 0.8s 0.2s ease both;
-    }
-
-    .profile-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(30%) contrast(110%);
-      opacity: 0.9;
-      transition: filter 0.3s, opacity 0.3s;
-    }
-
-    .profile-frame:hover img {
-      filter: grayscale(0%) contrast(100%);
-      opacity: 1;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.25rem 1.75rem;
-      border-radius: 4px;
-      width: 240px;
-      animation: slideLeft 0.8s ease both;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-    }
-
-    .stat-card.s1::before {
-      background: var(--accent);
-    }
-
-    .stat-card.s2::before {
-      background: var(--gold);
-    }
-
-    .stat-card.s3::before {
+    .visitor-dot {
+      width: 6px;
+      height: 6px;
       background: var(--accent3);
-    }
-
-    .stat-card.s4::before {
-      background: #a78bfa;
-    }
-
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 0.25rem;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    @keyframes slideLeft {
-      from {
-        opacity: 0;
-        transform: translateX(40px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
+      border-radius: 50%;
+      animation: pulse 2s infinite
     }
 
     @keyframes pulse {
@@ -400,282 +159,455 @@
       }
 
       50% {
-        opacity: 0.5;
-        transform: scale(0.8)
+        opacity: .5;
+        transform: scale(1.3)
       }
     }
 
-    /* Sections */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 3rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, .12) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, .08) 0%, transparent 50%)
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%)
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 5rem
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.03em;
+      animation: fadeUp .8s .1s ease both
+    }
+
+    .hero-name .line2 {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+    }
+
+    .hero-roles {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      animation: fadeUp .8s .2s ease both
+    }
+
+    .role-badge {
+      padding: .35rem .9rem;
+      border-radius: 2px;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    .role-badge.eng {
+      background: rgba(0, 212, 255, .1);
+      color: var(--accent);
+      border: 1px solid rgba(0, 212, 255, .25)
+    }
+
+    .role-badge.lead {
+      background: rgba(124, 58, 237, .1);
+      color: #a78bfa;
+      border: 1px solid rgba(124, 58, 237, .25)
+    }
+
+    .role-badge.money {
+      background: rgba(245, 158, 11, .12);
+      color: var(--gold);
+      border: 1px solid rgba(245, 158, 11, .3)
+    }
+
+    .role-badge.trade {
+      background: rgba(16, 185, 129, .1);
+      color: var(--accent3);
+      border: 1px solid rgba(16, 185, 129, .25)
+    }
+
+    .hero-desc {
+      margin-top: 2rem;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 480px;
+      animation: fadeUp .8s .3s ease both
+    }
+
+    .hero-desc span {
+      color: var(--text);
+      font-style: normal
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      animation: fadeUp .8s .4s ease both
+    }
+
+    .btn {
+      padding: .85rem 2rem;
+      border-radius: 3px;
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #000;
+      font-weight: 700;
+      border: none
+    }
+
+    .btn-primary:hover {
+      opacity: .88;
+      transform: translateY(-2px)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border)
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px)
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5rem
+    }
+
+    .orbit-container {
+      position: relative;
+      width: 380px;
+      height: 380px
+    }
+
+    .orbit-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px dashed;
+      animation: spin linear infinite
+    }
+
+    .orbit-ring.r1 {
+      inset: 0;
+      border-color: rgba(0, 212, 255, .15);
+      animation-duration: 18s
+    }
+
+    .orbit-ring.r2 {
+      inset: 30px;
+      border-color: rgba(124, 58, 237, .15);
+      animation-duration: 25s;
+      animation-direction: reverse
+    }
+
+    .orbit-ring.r3 {
+      inset: 60px;
+      border-color: rgba(245, 158, 11, .12);
+      animation-duration: 35s
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .orbit-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center
+    }
+
+    .orbit-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 0 40px rgba(0, 212, 255, .3)
+    }
+
+    .orbit-name {
+      margin-top: 1rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem
+    }
+
+    .orbit-title {
+      font-size: .68rem;
+      color: var(--muted);
+      margin-top: .3rem;
+      letter-spacing: .1em
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0
+    }
+
+    .stat-box {
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: background .3s
+    }
+
+    .stat-box:hover {
+      background: var(--surface)
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+    }
+
+    .stat-label {
+      font-size: .68rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: .4rem
+    }
+
     section {
-      padding: 6rem 3rem;
+      padding: 7rem 3rem
     }
 
     .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: .68rem;
+      color: var(--accent2);
+      letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.4;
+      margin-bottom: .75rem
     }
 
     .section-title {
       font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -.02em;
+      margin-bottom: 3rem
     }
 
-    /* About */
-    .about {
-      background: var(--surface);
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 3rem
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-      margin-top: 4rem;
+      gap: 4rem;
+      align-items: center
     }
 
-    .about-text p {
-      font-family: 'Fraunces', serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-text p span {
-      color: var(--text);
-    }
-
-    .pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem
     }
 
     .pillar {
       padding: 1.5rem;
-      background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 4px;
-      transition: border-color 0.2s;
+      background: var(--surface);
+      transition: border-color .2s, transform .2s;
+      cursor: default
     }
 
     .pillar:hover {
-      border-color: var(--accent);
+      border-color: var(--accent2);
+      transform: translateY(-4px)
     }
 
     .pillar-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.8rem;
+      margin-bottom: .75rem
     }
 
-    .pillar h3 {
+    .pillar-title {
       font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: .9rem;
+      margin-bottom: .4rem
     }
 
-    .pillar p {
+    .pillar-text {
+      font-size: .72rem;
       color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.6;
+      line-height: 1.65
     }
 
-    /* Lending Section Styles */
-    .finance {
-      background: var(--bg);
-    }
-
-    .finance-inner {
-      margin-top: 3rem;
+    .skills-columns {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem
     }
 
-    .finance-card {
-      padding: 2.5rem;
-      background: var(--surface);
-      border: 1px solid rgba(245, 158, 11, 0.22);
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
+    .skill-category {
+      margin-bottom: 2rem
     }
 
-    .finance-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-    }
-
-    .finance-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.4rem;
-    }
-
-    .finance-tagline {
-      color: var(--muted);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1.75rem;
-    }
-
-    .finance-desc {
-      font-family: 'Fraunces', serif;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .finance-desc span {
-      color: var(--text);
-    }
-
-    .finance-action {
-      margin-top: 1.75rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.6rem 1.25rem;
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: 2px;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .finance-action::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    .finance-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .fi-item {
-      padding: 1.25rem 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      transition: border-color 0.2s;
-    }
-
-    .fi-item:hover {
-      border-color: rgba(245, 158, 11, 0.3);
-    }
-
-    .fi-item h4 {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-      color: var(--gold);
-    }
-
-    .fi-item p {
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.6;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.75rem;
-      border-radius: 4px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .skill-group:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0, 212, 255, 0.2);
-    }
-
-    .skill-group h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .skill-cat-title {
+      font-size: .7rem;
       color: var(--accent);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem
     }
 
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: .5rem
     }
 
     .skill-tag {
-      background: rgba(255, 255, 255, 0.04);
+      padding: .35rem .85rem;
       border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.3rem 0.75rem;
       border-radius: 2px;
-      font-size: 0.7rem;
-      transition: all 0.2s;
+      font-size: .7rem;
+      color: var(--muted);
+      transition: all .2s;
+      cursor: default
     }
 
     .skill-tag:hover {
-      background: rgba(0, 212, 255, 0.1);
-      color: var(--accent);
       border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0, 212, 255, .05)
     }
 
-    /* Experience */
-    .experience {
+    .finance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem
+    }
+
+    .fi-card {
       background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 6px
+    }
+
+    .fi-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem
+    }
+
+    .fi-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .fi-item:last-child {
+      border-bottom: none
+    }
+
+    .fi-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent3);
+      margin-top: 6px;
+      flex-shrink: 0
+    }
+
+    .fi-info strong {
+      font-size: .85rem;
+      display: block;
+      margin-bottom: .2rem
+    }
+
+    .fi-info span {
+      font-size: .72rem;
+      color: var(--muted)
     }
 
     .timeline {
-      margin-top: 3rem;
       position: relative;
+      padding-left: 2rem
     }
 
     .timeline::before {
@@ -685,302 +617,169 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: var(--border);
+      background: var(--border)
     }
 
     .tl-item {
-      padding-left: 2.5rem;
-      padding-bottom: 3rem;
       position: relative;
-    }
-
-    .tl-item:last-child {
-      padding-bottom: 0;
+      padding-bottom: 3rem;
+      padding-left: 1.5rem
     }
 
     .tl-dot {
       position: absolute;
-      left: -5px;
-      top: 5px;
-      width: 11px;
-      height: 11px;
+      left: -2.35rem;
+      top: 6px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      border: 2px solid var(--bg);
-    }
-
-    .tl-dot.blue {
-      background: var(--accent);
-      box-shadow: 0 0 12px var(--accent);
+      border: 2px solid
     }
 
     .tl-dot.gold {
-      background: var(--gold);
-      box-shadow: 0 0 14px var(--gold);
+      border-color: var(--gold);
+      background: rgba(245, 158, 11, .2)
+    }
+
+    .tl-dot.blue {
+      border-color: var(--accent);
+      background: rgba(0, 212, 255, .2)
     }
 
     .tl-date {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .tl-date.blue {
-      color: var(--accent);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      margin-bottom: .5rem
     }
 
     .tl-date.gold {
-      color: var(--gold);
+      color: var(--gold)
+    }
+
+    .tl-date.blue {
+      color: var(--accent)
     }
 
     .tl-role {
       font-family: 'Syne', sans-serif;
-      font-size: 1.3rem;
       font-weight: 700;
-      margin-bottom: 0.15rem;
+      font-size: 1.1rem;
+      margin-bottom: .25rem
     }
 
     .tl-company {
+      font-size: .78rem;
       color: var(--muted);
-      font-size: 0.8rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem
     }
 
     .tl-badge {
       display: inline-block;
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.65rem;
+      padding: .2rem .7rem;
       border-radius: 2px;
-      margin-bottom: 1rem;
+      font-size: .65rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem
     }
 
     .tl-badge.green {
-      background: rgba(16, 185, 129, 0.12);
+      background: rgba(16, 185, 129, .1);
       color: var(--accent3);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .tl-items {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+      border: 1px solid rgba(16, 185, 129, .25)
     }
 
     .tl-bullet {
-      display: flex;
-      gap: 0.75rem;
-      font-size: 0.8rem;
-      line-height: 1.6;
+      font-size: .78rem;
       color: var(--muted);
+      line-height: 1.8;
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: .5rem
     }
 
-    .tl-bullet::before {
-      content: '▸';
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    /* Projects */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem
     }
 
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
       padding: 2rem;
-      border-radius: 4px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      border-radius: 6px;
+      transition: border-color .2s, transform .2s
     }
 
     .project-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0, 212, 255, 0.3);
-    }
-
-    /* Project Image Style */
-    .project-img-slot {
-      width: 100%;
-      height: 180px;
-      background: var(--surface2);
-      margin-bottom: 1.5rem;
-      border-radius: 2px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .project-img-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.6;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .project-card:hover .project-img-slot img {
-      opacity: 1;
-      transform: scale(1.05);
+      border-color: var(--accent2);
+      transform: translateY(-4px)
     }
 
     .project-tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      border-radius: 2px;
-      margin-bottom: 1rem;
       display: inline-block;
+      padding: .2rem .65rem;
+      border-radius: 2px;
+      font-size: .63rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem
     }
 
     .project-tag.api {
-      background: rgba(0, 212, 255, 0.1);
+      background: rgba(0, 212, 255, .1);
       color: var(--accent);
+      border: 1px solid rgba(0, 212, 255, .2)
     }
 
     .project-tag.iot {
-      background: rgba(16, 185, 129, 0.1);
+      background: rgba(16, 185, 129, .1);
       color: var(--accent3);
+      border: 1px solid rgba(16, 185, 129, .2)
     }
 
     .project-tag.cloud {
-      background: rgba(124, 58, 237, 0.1);
+      background: rgba(124, 58, 237, .1);
       color: #a78bfa;
-    }
-
-    .project-tag.tool {
-      background: rgba(245, 158, 11, 0.1);
-      color: var(--gold);
+      border: 1px solid rgba(124, 58, 237, .2)
     }
 
     .project-card h3 {
       font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: .75rem
     }
 
     .project-card p {
+      font-size: .78rem;
       color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.65;
+      line-height: 1.75;
+      margin-bottom: 1.2rem
     }
 
     .project-metric {
-      margin-top: 1.25rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.7rem;
-      color: var(--accent3);
+      font-size: .72rem;
+      color: var(--accent3)
     }
 
-    /* Trading */
     .trading {
-      background: var(--surface);
+      background: var(--surface)
     }
 
-    .trading-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 2.5rem;
-      align-items: start;
-    }
-
-    .trading-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 4px;
-    }
-
-    .trading-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    /* Trading Image Style */
-    .trading-visual {
-      width: 100%;
-      height: 200px;
-      background: var(--surface);
-      margin-bottom: 1.5rem;
-      border-radius: 2px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .trading-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-    }
-
-    .trading-items {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .trading-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.75rem;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 2px;
-      border: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    .trading-item:hover {
-      border-color: var(--border);
-    }
-
-    .t-icon {
-      font-size: 1.1rem;
-      width: 2rem;
-      text-align: center;
-    }
-
-    .t-info strong {
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 0.1rem;
-    }
-
-    .t-info span {
-      color: var(--muted);
-      font-size: 0.7rem;
-    }
-
-    /* Ticker */
     .ticker-wrap {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      padding: 0.9rem 0;
-      margin-bottom: 2.5rem;
       overflow: hidden;
-      border-radius: 4px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+      margin-bottom: 3rem
     }
 
     .ticker-inner {
       display: flex;
       gap: 3rem;
-      animation: ticker 22s linear infinite;
-      white-space: nowrap;
+      animation: ticker 20s linear infinite;
+      width: max-content
     }
 
     @keyframes ticker {
@@ -996,286 +795,575 @@
     .ticker-item {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
+      gap: .5rem;
+      font-size: .75rem;
+      white-space: nowrap
     }
 
-    .ticker-item .sym {
-      color: var(--accent);
+    .sym {
+      color: var(--muted)
     }
 
-    .ticker-item .val {
+    .val {
       color: var(--text);
+      font-weight: 600
     }
 
-    .ticker-item .up {
-      color: var(--accent3);
+    .up {
+      color: var(--accent3)
     }
 
-    .ticker-item .down {
-      color: var(--red);
+    .down {
+      color: var(--red)
     }
 
-    /* Achievements */
-    .achievements-grid {
+    .trading-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem
     }
 
-    .ach-card {
-      background: var(--surface);
+    .trading-card {
+      background: var(--surface2);
       border: 1px solid var(--border);
-      padding: 1.75rem;
-      border-radius: 4px;
-      text-align: center;
+      padding: 2rem;
+      border-radius: 6px
     }
 
-    .ach-num {
+    .trading-card h3 {
       font-family: 'Syne', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem
     }
 
-    .ach-label {
-      color: var(--muted);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      margin-top: 0.5rem;
+    .trading-visual {
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+      overflow: hidden
     }
 
-    /* Contact */
-    .contact {
-      background: var(--surface);
+    .trading-visual img {
+      width: 100%;
+      display: block
+    }
+
+    .trading-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .trading-item:last-child {
+      border-bottom: none
+    }
+
+    .t-icon {
+      font-size: 1.4rem
+    }
+
+    .t-info strong {
+      font-size: .82rem;
+      display: block
+    }
+
+    .t-info span {
+      font-size: .72rem;
+      color: var(--muted)
     }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      margin-top: 4rem;
-      align-items: start;
+      gap: 4rem
     }
 
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem
     }
 
     .contact-item {
       display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      padding: 1.25rem;
-      background: var(--surface2);
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 4px;
-      transition: border-color 0.2s;
       text-decoration: none;
-      color: inherit;
+      color: var(--text);
+      transition: border-color .2s
     }
 
     .contact-item:hover {
-      border-color: var(--accent);
+      border-color: var(--accent)
     }
 
     .c-icon {
-      font-size: 1.25rem;
-    }
-
-    .c-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
+      font-size: 1.3rem
     }
 
     .c-val {
-      font-size: 0.85rem;
-      color: var(--text);
+      font-size: .82rem
     }
 
     .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 6px
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1rem
     }
 
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      margin-bottom: 1.25rem
     }
 
     .form-group label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      display: block;
+      font-size: .68rem;
       color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem
     }
 
     .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: var(--surface2);
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
       border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: .75rem 1rem;
       color: var(--text);
-      padding: 0.85rem 1rem;
-      border-radius: 2px;
       font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
+      font-size: .8rem;
       outline: none;
-      transition: border-color 0.2s;
-      cursor: none;
-      resize: none;
+      transition: border-color .2s
     }
 
     .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--accent);
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent)
     }
 
-    /* Message Box */
+    .form-group textarea {
+      height: 100px;
+      resize: vertical
+    }
+
+    .form-group select {
+      cursor: pointer
+    }
+
+    .form-group select option {
+      background: var(--bg)
+    }
+
     #messageBox {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--surface2);
-      border: 1px solid var(--accent);
-      padding: 1.5rem;
-      border-radius: 4px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      z-index: 1000;
       display: none;
-      max-width: 320px;
-      animation: fadeUp 0.4s ease forwards;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center
     }
 
-    #messageBox h4 {
+    #messageBox.show {
+      display: flex
+    }
+
+    .msg-inner {
+      background: var(--surface);
+      border: 1px solid var(--accent3);
+      padding: 2.5rem 3rem;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px
+    }
+
+    .msg-inner .check {
+      font-size: 3rem;
+      margin-bottom: 1rem
+    }
+
+    .msg-inner h3 {
       font-family: 'Syne', sans-serif;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: .75rem
     }
 
-    #messageBox p {
-      font-size: 0.8rem;
-      color: var(--text);
-      margin-bottom: 1rem;
+    .msg-inner p {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem
     }
 
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 0 3rem;
-    }
-
-    /* Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* Footer */
     footer {
       padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid var(--border);
-    }
-
-    footer span {
-      color: var(--muted);
-      font-size: 0.7rem;
+      font-size: .72rem;
+      color: var(--muted)
     }
 
     .footer-links {
       display: flex;
-      gap: 2rem;
+      gap: 2rem
     }
 
     .footer-links a {
       color: var(--muted);
-      font-size: 0.7rem;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color .2s
     }
 
     .footer-links a:hover {
+      color: var(--accent)
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ── TRACKER PANEL ─────────────────── */
+    .tracker-panel {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--surface);
+      border: 1px solid rgba(0, 212, 255, .18);
+      border-radius: 12px;
+      padding: 1rem 1.3rem;
+      z-index: 500;
+      font-size: .7rem;
+      min-width: 170px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .5);
+      animation: fadeUp .5s 1.2s ease both;
+      opacity: 0
+    }
+
+    .tracker-header {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--muted);
+      margin-bottom: .7rem;
+      font-size: .63rem;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .tracker-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .22rem 0
+    }
+
+    .tracker-label {
+      color: var(--muted)
+    }
+
+    .tracker-val {
       color: var(--accent);
+      font-weight: 700;
+      font-family: 'Syne', sans-serif
+    }
+
+    .tracker-close {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent2);
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: .65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1
+    }
+
+    /* ── AI Q&A ────────────────────────── */
+    .ai-section {
+      padding: 7rem 3rem;
+      border-top: 1px solid var(--border)
+    }
+
+    .ai-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--surface2);
+      border: 1px solid rgba(0, 212, 255, .22);
+      border-radius: 14px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .ai-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient)
+    }
+
+    .ai-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem
+    }
+
+    .ai-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0
+    }
+
+    .ai-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem
+    }
+
+    .ai-subtitle {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .25rem
+    }
+
+    .ai-answered-notice {
+      background: rgba(16, 185, 129, .08);
+      border: 1px solid rgba(16, 185, 129, .25);
+      border-radius: 8px;
+      padding: 1.3rem 1.5rem;
+      font-size: .8rem;
+      color: var(--accent3);
+      text-align: center;
+      display: none
+    }
+
+    .ai-input-wrap {
+      display: flex;
+      gap: .75rem;
+      margin-bottom: 1rem
+    }
+
+    .ai-input-wrap input {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: .85rem 1.1rem;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: .82rem;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .ai-input-wrap input:focus {
+      border-color: var(--accent)
+    }
+
+    .ai-input-wrap input:disabled {
+      opacity: .5;
+      cursor: not-allowed
+    }
+
+    .ai-ask-btn {
+      padding: .85rem 1.6rem;
+      background: var(--gradient);
+      color: #000;
+      font-weight: 700;
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem;
+      letter-spacing: .05em;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      white-space: nowrap
+    }
+
+    .ai-ask-btn:hover:not(:disabled) {
+      opacity: .85;
+      transform: translateY(-1px)
+    }
+
+    .ai-ask-btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none
+    }
+
+    .ai-thinking {
+      display: none;
+      align-items: center;
+      gap: .6rem;
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: .75rem
+    }
+
+    .ai-thinking.show {
+      display: flex
+    }
+
+    .ai-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 1.2s infinite
+    }
+
+    .ai-dot:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .ai-dot:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes blink {
+
+      0%,
+      80%,
+      100% {
+        opacity: .2
+      }
+
+      40% {
+        opacity: 1
+      }
+    }
+
+    .ai-answer-box {
+      display: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-size: .82rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre-wrap
+    }
+
+    .ai-answer-box.show {
+      display: block
+    }
+
+    .ai-disclaimer {
+      font-size: .63rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      text-align: center;
+      opacity: .6
     }
 
     @media(max-width:900px) {
       nav {
-        padding: 1.25rem 1.5rem;
+        padding: 1rem 1.5rem
       }
 
       .nav-links {
-        display: none;
+        gap: 1rem
       }
 
       .hero {
         grid-template-columns: 1fr;
         padding: 0 1.5rem;
+        text-align: center
       }
 
-      .hero-right {
-        align-items: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
+      .hero-visual {
+        display: none
       }
 
-      .stat-card,
-      .profile-frame {
-        width: auto;
-        flex: 1 1 180px;
-      }
-
-      .profile-frame {
-        height: 280px;
+      .hero-roles,
+      .hero-cta {
+        justify-content: center
       }
 
       section {
-        padding: 4rem 1.5rem;
+        padding: 4rem 1.5rem
       }
 
       .about-grid,
+      .skills-columns,
+      .finance-grid,
       .trading-grid,
-      .contact-grid,
-      .finance-inner {
+      .contact-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2rem
+      }
+
+      .pillar-grid,
+      .projects-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr
       }
 
       .divider {
-        margin: 0 1.5rem;
+        margin: 0 1.5rem
       }
 
       footer {
         flex-direction: column;
         gap: 1rem;
-        text-align: center;
+        text-align: center
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+
+      .tracker-panel {
+        display: none
+      }
+
+      .ai-section {
+        padding: 4rem 1.5rem
       }
     }
   </style>
@@ -1283,273 +1371,254 @@
 
 <body>
 
-  <!-- 💵 Cash Cursor -->
-  <div id="cashCursor">💵</div>
+  <div id="cashCursor">💰</div>
   <div id="cashRing"></div>
 
-  <!-- Custom Notification UI -->
-  <div id="messageBox">
-    <h4>Message Sent</h4>
-    <p>Thanks for reaching out! I'll get back to you shortly regarding your inquiry.</p>
-    <button class="btn btn-outline" style="width:100%; padding: 0.5rem;" onclick="closeMsg()">Close</button>
+  <!-- ── TRACKER PANEL ────────────────────── -->
+  <div class="tracker-panel" id="trackerPanel">
+    <button class="tracker-close" onclick="document.getElementById('trackerPanel').style.display='none'"
+      title="Close">✕</button>
+    <div class="tracker-header">📊 Live Stats</div>
+    <div class="tracker-row"><span class="tracker-label">Total Visits</span><span class="tracker-val"
+        id="totalVisits">—</span></div>
+    <div class="tracker-row"><span class="tracker-label">Session #</span><span class="tracker-val"
+        id="sessionNum">—</span></div>
+    <div class="tracker-row"><span class="tracker-label">Questions Asked</span><span class="tracker-val"
+        id="totalQuestions">—</span></div>
+    <div class="tracker-row"><span class="tracker-label">Time on Page</span><span class="tracker-val"
+        id="timeOnPage">0s</span></div>
   </div>
 
-  <!-- Nav -->
+  <!-- ── NAV ──────────────────────────────── -->
   <nav>
-    <div class="nav-logo">SVK Reddy</div>
+    <div class="nav-logo">PSVK.REDDY</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#finance">Financing</a></li>
+      <li><a href="#experience">Exp</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#trading">Trading</a></li>
+      <li><a href="#ask-ai">Ask AI</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="visitor-badge">
+      <div class="visitor-dot"></div>
+      <span id="navVisitorCount">— Visits</span>
+    </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ── HERO ─────────────────────────────── -->
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <h1 class="hero-name">
-        Sai Venkat<br>
-        <span class="line2">Krishna Reddy</span>
-      </h1>
+      <div class="hero-name">
+        <div>Sai Venkat</div>
+        <div class="line2">Krishna Reddy</div>
+      </div>
       <div class="hero-roles">
-        <span class="role-badge eng">Assoc. Technical Lead</span>
-        <span class="role-badge lead">Full-Stack Engineer</span>
-        <span class="role-badge trade">Trader</span>
+        <span class="role-badge eng">Software Engineer</span>
+        <span class="role-badge lead">Tech Lead</span>
         <span class="role-badge money">Financier</span>
-        <span class="role-badge money">Freelancing</span>
+        <span class="role-badge trade">Trader</span>
       </div>
       <p class="hero-desc">
-        Engineering leader driving <span>scalable systems</span> and <span>technical strategy</span>. Associate
-        Technical Lead at ASZ Technologies. Private financier and market enthusiast.
+        Building <span>scalable systems</span> by day, analyzing <span>markets &amp; capital flows</span> by night.
+        Engineer turned multi-disciplinary <span>value creator</span>.
       </p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Get In Touch</a>
-        <a href="#experience" class="btn btn-outline">View Experience</a>
+        <a href="#projects" class="btn btn-primary">View My Work ▸</a>
+        <a href="mailto:1.saivenkatakrishnareddyp@gmail.com" class="btn btn-outline">Let's Connect ✉</a>
       </div>
     </div>
-    <div class="hero-right">
-      <!-- Profile Image Slot -->
-      <div class="profile-frame">
-        <img src="https://via.placeholder.com/400x530/1a1a26/e8e8f0?text=Profile+Image" alt="Sai Venkat Krishna Reddy">
-      </div>
-      <div class="stat-card s1">
-        <div class="stat-num" style="color:var(--accent)">3+</div>
-        <div class="stat-label">Years Engineering</div>
-      </div>
-      <div class="stat-card s2">
-        <div class="stat-num" style="color:var(--gold)">₹ Selective</div>
-        <div class="stat-label">Personal Lending</div>
-      </div>
-      <div class="stat-card s3">
-        <div class="stat-num" style="color:var(--accent3)">99.9%</div>
-        <div class="stat-label">Uptime Maintained</div>
-      </div>
-      <div class="stat-card s4">
-        <div class="stat-num" style="color:#a78bfa">10+</div>
-        <div class="stat-label">APIs Built</div>
+    <div class="hero-visual">
+      <div class="orbit-container">
+        <div class="orbit-ring r1"></div>
+        <div class="orbit-ring r2"></div>
+        <div class="orbit-ring r3"></div>
+        <div class="orbit-center">
+          <div class="orbit-avatar">👨‍💻</div>
+          <div class="orbit-name">PSVK Reddy</div>
+          <div class="orbit-title">ENGINEER · TRADER · FINANCIER</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="about" id="about">
+  <!-- ── STATS ─────────────────────────────── -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">APIs Shipped</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">5K+</div>
+      <div class="stat-label">Users Served</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ── ABOUT ─────────────────────────────── -->
+  <section id="about">
     <div class="section-label">01 / About</div>
-    <h2 class="section-title">Engineer. Leader.<br>Private Financier.</h2>
+    <h2 class="section-title">Who I Am</h2>
     <div class="about-grid reveal">
-      <div class="about-text">
-        <p>
-          I'm <span>Sai Venkat Krishna Reddy</span>, a software engineering leader based in Hyderabad. I currently serve
-          as <span>Associate Technical Lead</span> at ASZ Technologies, where I lead high-impact engineering teams.
+      <div>
+        <p
+          style="color:var(--muted);font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem">
+          I'm a <span style="color:var(--text);font-style:normal">Software Engineer</span> with a deep passion for
+          building high-performance systems and understanding the mechanics of capital. My work spans
+          <span style="color:var(--text);font-style:normal">full-stack .NET development</span>, cloud architecture,
+          and <span style="color:var(--text);font-style:normal">data-driven trading</span>.
         </p>
-        <p>
-          With experience across <span>ASP.NET Core, Angular, and Azure</span>, I specialize in building distributed
-          systems that are as reliable as they are performant. I enjoy translating business needs into elegant technical
-          architecture.
-        </p>
-        <p>
-          Beyond tech, I am deeply involved in the <span>financial ecosystem</span>. I actively trade in the Indian
-          equity markets and provide <span>interest-based financing</span> for vetted opportunities. I believe in the
-          power of capital when paired with disciplined risk management.
-        </p>
+        <p style="color:var(--muted);font-size:.83rem;line-height:1.9">Based in India — currently Consultant
+          and building at the intersection of engineering and finance.</p>
       </div>
-      <div class="pillars">
+      <div class="pillar-grid">
         <div class="pillar">
-          <div class="pillar-icon">🏗️</div>
-          <h3>Technical Leadership</h3>
-          <p>Leading by example through architecture design, code excellence, and mentoring to deliver high-availability
-            software products.</p>
+          <div class="pillar-icon">⚙️</div>
+          <div class="pillar-title">Engineering</div>
+          <div class="pillar-text">.NET, Azure, REST APIs, IoT systems</div>
         </div>
         <div class="pillar">
-          <div class="pillar-icon">💸</div>
-          <h3>Personal Lending</h3>
-          <p>Providing private liquidity services exclusively to personally known individuals. Focused on strategic
-            capital allocation and reliable returns.</p>
+          <div class="pillar-icon">📈</div>
+          <div class="pillar-title">Trading</div>
+          <div class="pillar-text">NSE/BSE equities, technical analysis</div>
         </div>
         <div class="pillar">
-          <div class="pillar-icon">📊</div>
-          <h3>Market Trading</h3>
-          <p>A personal passion for the stock market—leveraging technical analysis and systematic setups to navigate the
-            Indian equities space.</p>
+          <div class="pillar-icon">💰</div>
+          <div class="pillar-title">Finance</div>
+          <div class="pillar-text">Private lending, capital allocation</div>
         </div>
       </div>
     </div>
   </section>
-
   <div class="divider"></div>
 
-  <!-- Private Finance -->
-  <section class="finance" id="finance">
-    <div class="section-label">02 / Private Finance</div>
-    <h2 class="section-title">Selective Lending</h2>
-    <div class="finance-inner reveal">
-      <div class="finance-card">
-        <div class="finance-title">Personal Finance</div>
-        <div class="finance-tagline">Selective · Interest · Trusted</div>
-        <p class="finance-desc">
-          I provide private <span>liquidity solutions</span> through interest-based lending, exclusively available to
-          <span>personally known and vetted individuals</span>. This is a highly selective service focused on assisting
-          trusted contacts with short-term capital needs.
-        </p>
-        <p class="finance-desc" style="margin-top:1rem">
-          Every opportunity is evaluated through a personal <span>risk-assessment lens</span>, ensuring that the
-          deployment of capital remains secure while fostering mutual financial growth.
-        </p>
-        <div class="finance-action">● Lending to Trusted Individuals</div>
-      </div>
-      <div class="finance-list">
-        <div class="fi-item">
-          <h4>🤝 Personal Network Only</h4>
-          <p>Providing capital solutions strictly to a closed circle of personally known individuals with clear
-            repayment expectations.</p>
-        </div>
-        <div class="fi-item">
-          <h4>⚖️ Interest-Based Capital</h4>
-          <p>Structuring private lending for interest, ensuring a professional financial arrangement within my personal
-            ecosystem.</p>
-        </div>
-        <div class="fi-item">
-          <h4>⚡ Tailored Liquidity</h4>
-          <p>Direct communication and flexible terms tailored to the specific needs of trusted partners and associates.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Skills -->
+  <!-- ── SKILLS ────────────────────────────── -->
   <section id="skills">
-    <div class="section-label">03 / Skills</div>
+    <div class="section-label">02 / Skills</div>
     <h2 class="section-title">Technical Arsenal</h2>
-    <div class="skills-grid reveal">
-      <div class="skill-group">
-        <h3>⚡ Backend</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">C#</span>
-          <span class="skill-tag">.NET 8</span>
-          <span class="skill-tag">ASP.NET Core</span>
-          <span class="skill-tag">Web API</span>
-          <span class="skill-tag">Entity Framework</span>
+    <div class="skills-columns reveal">
+      <div>
+        <div class="skill-category">
+          <div class="skill-cat-title">Languages &amp; Frameworks</div>
+          <div class="skill-tags">
+            <span class="skill-tag">C#</span><span class="skill-tag">.NET 8</span><span class="skill-tag">ASP.NET
+              Core</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span
+              class="skill-tag">Python</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">Cloud &amp; DevOps</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Azure</span><span class="skill-tag">Docker</span><span
+              class="skill-tag">CI/CD</span><span class="skill-tag">MinIO</span><span class="skill-tag">IIS</span>
+          </div>
         </div>
       </div>
-      <div class="skill-group">
-        <h3>🎨 Frontend</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Angular 19</span>
-          <span class="skill-tag">TypeScript</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">Bootstrap</span>
-          <span class="skill-tag">Material UI</span>
+      <div>
+        <div class="skill-category">
+          <div class="skill-cat-title">Databases</div>
+          <div class="skill-tags">
+            <span class="skill-tag">SQL Server</span><span class="skill-tag">PostgreSQL</span><span
+              class="skill-tag">Redis</span><span class="skill-tag">MongoDB</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-group">
-        <h3>🗃️ Databases</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">SQL Server</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">MongoDB</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>🛠 Leadership</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Tech Strategy</span>
-          <span class="skill-tag">Mentoring</span>
-          <span class="skill-tag">Architecture</span>
-          <span class="skill-tag">Agile</span>
+        <div class="skill-category">
+          <div class="skill-cat-title">Finance &amp; Trading</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Technical Analysis</span><span class="skill-tag">Price Action</span><span
+              class="skill-tag">NSE / BSE</span><span class="skill-tag">Risk Management</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
   <div class="divider"></div>
 
-  <!-- Experience -->
-  <section class="experience" id="experience">
-    <div class="section-label">04 / Experience</div>
-    <h2 class="section-title">Work History</h2>
-    <div class="timeline reveal">
+  <!-- ── FINANCE ───────────────────────────── -->
+  <section id="finance">
+    <div class="section-label">03 / Private Finance</div>
+    <h2 class="section-title">Capital &amp; Lending</h2>
+    <div class="finance-grid reveal">
+      <div class="fi-card">
+        <h3>💼 Lending Services</h3>
+        <div class="fi-item">
+          <div class="fi-dot"></div>
+          <div class="fi-info"><strong>Personal Loans</strong><span>Flexible terms, competitive rates</span></div>
+        </div>
+        <div class="fi-item">
+          <div class="fi-dot"></div>
+          <div class="fi-info"><strong>Business Capital</strong><span>Short to medium-term financing</span></div>
+        </div>
+        <div class="fi-item">
+          <div class="fi-dot"></div>
+          <div class="fi-info"><strong>Emergency Funds</strong><span>Quick disbursement available</span></div>
+        </div>
+      </div>
+      <div class="fi-card">
+        <h3>📋 Terms Overview</h3>
+        <div class="fi-item">
+          <div class="fi-dot" style="background:var(--gold)"></div>
+          <div class="fi-info"><strong>Loan Range</strong><span>₹50,000 — ₹50,00,000</span></div>
+        </div>
+        <div class="fi-item">
+          <div class="fi-dot" style="background:var(--gold)"></div>
+          <div class="fi-info"><strong>Tenure</strong><span>3 months — 3 years</span></div>
+        </div>
+        <div class="fi-item">
+          <div class="fi-dot" style="background:var(--gold)"></div>
+          <div class="fi-info"><strong>Inquiry</strong><span>Via contact form below</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
 
-      <!-- Role 1: Assoc Tech Lead -->
+  <!-- ── EXPERIENCE ────────────────────────── -->
+  <section id="experience">
+    <div class="section-label">04 / Experience</div>
+    <h2 class="section-title">Career Path</h2>
+    <div class="timeline reveal">
       <div class="tl-item">
         <div class="tl-dot gold"></div>
-        <div class="tl-date gold">2025 — Present</div>
-        <div class="tl-role">Associate Technical Lead</div>
-        <div class="tl-company">ASZ Technologies Pvt. Ltd. · Bangalore/Remote</div>
-        <div class="tl-badge green">● Current Position</div>
-        <div class="tl-items">
-          <div class="tl-bullet">Leading technical direction across multiple client engagements—owning architecture
-            decisions and acting as the primary point of contact for stakeholders.</div>
-          <div class="tl-bullet">Mentoring engineers through code reviews and design sessions, significantly raising
-            team engineering standards.</div>
-          <div class="tl-bullet">Maintaining 99.9% uptime on critical client applications through proactive monitoring
-            and robust system design.</div>
-        </div>
+        <div class="tl-date gold">2021 — 2022</div>
+        <div class="tl-role">Junior Software Engineer</div>
+        <div class="tl-company">Early Career · Hyderabad</div>
+        <div class="tl-bullet">Developed foundational full-stack skills across .NET and SQL Server environments.</div>
       </div>
-
-      <!-- Role 2: Software Engineer -->
       <div class="tl-item">
         <div class="tl-dot blue"></div>
         <div class="tl-date blue">2022 — 2025</div>
         <div class="tl-role">Software Engineer</div>
         <div class="tl-company">ASZ Technologies Pvt. Ltd. · Bangalore, India</div>
-        <div class="tl-items">
-          <div class="tl-bullet">Designed and implemented 10+ RESTful Web APIs in .NET, supporting platforms with 5,000+
-            active users.</div>
-          <div class="tl-bullet">Optimized SQL Server indexing and query performance, improving data-retrieval times by
-            50%.</div>
-          <div class="tl-bullet">Built and deployed critical IoT reporting modules for Senoko VMS, ensuring real-time
-            reliability.</div>
-          <div class="tl-bullet">Orchestrated migration of legacy .NET 6 applications to .NET 8 with zero downtime.
-          </div>
-        </div>
+        <div class="tl-bullet">Designed and implemented 10+ RESTful Web APIs in .NET, supporting platforms with 5,000+
+          active users.</div>
+        <div class="tl-bullet">Optimized SQL Server indexing and query performance, improving data-retrieval times by
+          50%.</div>
+        <div class="tl-bullet">Built and deployed critical IoT reporting modules for Senoko VMS, ensuring real-time
+          reliability.</div>
+        <div class="tl-bullet">Orchestrated migration of legacy .NET 6 applications to .NET 8 with zero downtime.</div>
       </div>
-
       <div class="tl-item">
         <div class="tl-dot gold"></div>
         <div class="tl-date gold">2023 — Present</div>
-        <div class="tl-role">Freelancing</div>
-        <div class="tl-company">Fraze Software Solutions - Remote</div>
+        <div class="tl-role">Consultant</div>
+        <div class="tl-company">Fraze Software Solutions — Remote</div>
         <div class="tl-badge green">● Current Position</div>
-        <div class="tl-items">
-          <div class="tl-bullet">Providing specialized full-stack development and technical consulting. Delivering
-            bespoke digital solutions and performance optimizations for diverse clients.</div>
-        </div>
+        <div class="tl-bullet">Providing specialized full-stack development and technical consulting. Delivering bespoke
+          digital solutions and performance optimizations for diverse clients.</div>
       </div>
-
     </div>
   </section>
-
   <div class="divider"></div>
 
-  <!-- Projects -->
+  <!-- ── PROJECTS ──────────────────────────── -->
   <section id="projects">
     <div class="section-label">05 / Projects</div>
     <h2 class="section-title">Notable Work</h2>
@@ -1577,75 +1646,89 @@
       </div>
     </div>
   </section>
-
   <div class="divider"></div>
 
-  <!-- Trading -->
+  <!-- ── TRADING ───────────────────────────── -->
   <section class="trading" id="trading">
-    <div class="section-label">06 / Trading & Markets</div>
+    <div class="section-label">06 / Trading &amp; Markets</div>
     <h2 class="section-title">Market Analysis</h2>
-
     <div class="ticker-wrap">
-      <div class="ticker-inner">
-        <div class="ticker-item"><span class="sym">NIFTY 50</span><span class="val">&nbsp;22,400&nbsp;</span><span
-            class="up">▲ +0.85%</span></div>
-        <div class="ticker-item"><span class="sym">SENSEX</span><span class="val">&nbsp;73,800&nbsp;</span><span
-            class="up">▲ +0.72%</span></div>
-        <div class="ticker-item"><span class="sym">BANKNIFTY</span><span class="val">&nbsp;48,250&nbsp;</span><span
-            class="down">▼ -0.34%</span></div>
-        <div class="ticker-item"><span class="sym">USD/INR</span><span class="val">&nbsp;83.45&nbsp;</span><span
-            class="down">▼ -0.1%</span></div>
-        <!-- duplicate for seamless loop -->
-        <div class="ticker-item"><span class="sym">NIFTY 50</span><span class="val">&nbsp;22,400&nbsp;</span><span
-            class="up">▲ +0.85%</span></div>
-        <div class="ticker-item"><span class="sym">SENSEX</span><span class="val">&nbsp;73,800&nbsp;</span><span
-            class="up">▲ +0.72%</span></div>
+      <div class="ticker-inner" id="tickerInner">
+        <div class="ticker-item"><span class="sym">Loading market data...</span></div>
       </div>
     </div>
-
     <div class="trading-grid reveal">
       <div class="trading-card">
-        <div class="trading-visual">
-          <img src="https://via.placeholder.com/500x300/1a1a26/f59e0b?text=Market+Chart" alt="Trading Chart">
-        </div>
+        <div class="trading-visual"><img src="https://via.placeholder.com/500x300/1a1a26/f59e0b?text=Market+Chart"
+            alt="Trading Chart"></div>
         <h3>📈 Trading Strategy</h3>
-        <div class="trading-items">
-          <div class="trading-item">
-            <div class="t-icon">🇮🇳</div>
-            <div class="t-info"><strong>Indian Equities</strong><span>NSE / BSE — Intraday & Swing</span></div>
-          </div>
-          <div class="trading-item">
-            <div class="t-icon">📊</div>
-            <div class="t-info"><strong>Technical Analysis</strong><span>Price action & systematic setups</span></div>
-          </div>
+        <div class="trading-item">
+          <div class="t-icon">🇮🇳</div>
+          <div class="t-info"><strong>Indian Equities</strong><span>NSE / BSE — Intraday &amp; Swing</span></div>
+        </div>
+        <div class="trading-item">
+          <div class="t-icon">📊</div>
+          <div class="t-info"><strong>Technical Analysis</strong><span>Price action &amp; systematic setups</span></div>
         </div>
       </div>
       <div class="trading-card">
         <h3>🖥️ FinTech Mindset</h3>
-        <p style="color:var(--muted);font-size:0.83rem;line-height:1.8;">
-          My engineering background allows me to approach markets with structured rules and data-driven discipline,
-          stripping away the emotion from trading.
-        </p>
+        <p style="color:var(--muted);font-size:.83rem;line-height:1.8">My engineering background allows me to approach
+          markets with structured rules and data-driven discipline, stripping away the emotion from trading.</p>
       </div>
     </div>
   </section>
-
   <div class="divider"></div>
 
-  <!-- Contact -->
+  <!-- ── AI Q&A ────────────────────────────── -->
+  <section class="ai-section" id="ask-ai">
+    <div class="section-label">07 / Ask AI</div>
+    <h2 class="section-title">Ask Me Anything</h2>
+    <div class="ai-card reveal">
+      <div class="ai-card-header">
+        <div class="ai-icon">🤖</div>
+        <div>
+          <div class="ai-title">AI Assistant — Powered by Gemini</div>
+          <div class="ai-subtitle">One question per visitor · Ask anything — tech, trading, finance, or about Sai</div>
+        </div>
+      </div>
+
+      <div class="ai-answered-notice" id="aiAnsweredNotice">
+        ✅ You've already used your question for this visit. Come back next time!
+      </div>
+
+      <div id="aiInputArea">
+        <div class="ai-input-wrap">
+          <input type="text" id="aiQuestion" placeholder="e.g. What is .NET? How does trading work? Who is Sai?"
+            maxlength="300" />
+          <button class="ai-ask-btn" id="aiAskBtn" onclick="askGemini()">Ask ✦</button>
+        </div>
+        <div class="ai-thinking" id="aiThinking">
+          <div class="ai-dot"></div>
+          <div class="ai-dot"></div>
+          <div class="ai-dot"></div>
+          <span>Gemini is thinking...</span>
+        </div>
+        <div class="ai-answer-box" id="aiAnswerBox"></div>
+        <div class="ai-disclaimer">Powered by Google Gemini · One question per visitor session</div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- ── CONTACT ───────────────────────────── -->
   <section class="contact" id="contact">
-    <div class="section-label">07 / Contact</div>
+    <div class="section-label">08 / Contact</div>
     <h2 class="section-title">Let's Connect</h2>
     <div class="contact-grid reveal">
       <div>
         <p
           style="color:var(--muted);font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;line-height:1.8;margin-bottom:2rem">
-          Reach out for technical leadership, collaboration, or inquiries regarding private finance opportunities.
-        </p>
+          Reach out for technical leadership, collaboration, or inquiries regarding private finance opportunities.</p>
         <div class="contact-info">
-          <a href="mailto:saivenkatakrishnareddyp@gmail.com" class="contact-item">
+          <a href="mailto:1.saivenkatakrishnareddyp@gmail.com" class="contact-item">
             <div class="c-icon">✉️</div>
-            <div class="c-val">saivenkatakrishnareddyp@gmail.com</div>
+            <div class="c-val">1.saivenkatakrishnareddyp@gmail.com</div>
           </a>
           <a href="tel:+919581898403" class="contact-item">
             <div class="c-icon">📞</div>
@@ -1656,14 +1739,10 @@
       <div>
         <div class="contact-form">
           <div class="form-row">
-            <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" id="userName" placeholder="John Doe">
+            <div class="form-group"><label>Your Name</label><input type="text" id="userName" placeholder="John Doe">
             </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="userEmail" placeholder="john@company.com">
-            </div>
+            <div class="form-group"><label>Email</label><input type="email" id="userEmail"
+                placeholder="john@company.com"></div>
           </div>
           <div class="form-group">
             <label>Topic</label>
@@ -1674,96 +1753,221 @@
               <option>Market Discussion</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea id="userMsg" placeholder="How can I help you?"></textarea>
-          </div>
-          <button class="btn btn-primary" style="border:none;width:100%;padding:1rem;" onclick="sendForm()">
-            Send Message ▸
-          </button>
+          <div class="form-group"><label>Message</label><textarea id="userMsg"
+              placeholder="How can I help you?"></textarea></div>
+          <button class="btn btn-primary" style="border:none;width:100%;padding:1rem" onclick="sendForm()">Send Message
+            ▸</button>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Success Modal -->
+  <div id="messageBox">
+    <div class="msg-inner">
+      <div class="check">✅</div>
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. I'll get back to you within 24–48 hours.</p>
+      <button class="btn btn-primary" style="border:none" onclick="closeMsg()">Close</button>
+    </div>
+  </div>
+
   <footer>
     <span>© 2025 Sai Venkat Krishna Reddy · Hyderabad, India 🇮🇳</span>
     <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#finance">Financing</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#experience">Experience</a>
+      <a href="#finance">Financing</a><a href="#ask-ai">Ask AI</a><a href="#contact">Contact</a>
     </div>
   </footer>
 
   <script>
+    /* ── CONFIG: paste your Gemini API key here ── */
+    const GEMINI_API_KEY = 'AIzaSyCGIdVKZT5JHL7TuhABt6nWsyZ61mlrOqY';
 
-    // Cursor
-    const cashCursor = document.getElementById('cashCursor');
-    const cashRing = document.getElementById('cashRing');
+    /* ── TRACKER ───────────────────────────────── */
+    function initTracker() {
+      const visits = (parseInt(localStorage.getItem('svk_visits') || '0')) + 1;
+      localStorage.setItem('svk_visits', visits);
+      const questions = parseInt(localStorage.getItem('svk_questions') || '0');
+
+      document.getElementById('totalVisits').textContent = visits;
+      document.getElementById('sessionNum').textContent = '#' + visits;
+      document.getElementById('totalQuestions').textContent = questions;
+      document.getElementById('navVisitorCount').textContent = visits + ' Visit' + (visits !== 1 ? 's' : '');
+
+      let secs = 0;
+      setInterval(() => {
+        secs++;
+        const m = Math.floor(secs / 60), s = secs % 60;
+        document.getElementById('timeOnPage').textContent = m > 0 ? `${m}m ${s}s` : `${s}s`;
+      }, 1000);
+    }
+
+    /* ── GEMINI AI ─────────────────────────────── */
+    const PROFILE_CONTEXT = `You are a smart AI assistant on Sai Venkat Krishna Reddy's portfolio. Answer general questions on any topic — coding, finance, trading, tech, science, etc. You also know Sai's profile and can answer questions about him when asked.
+
+Sai's Profile:
+- Name: Sai Venkat Krishna Reddy | Location: Hyderabad, India
+- Roles: Software Engineer, Freelancer, Trader, Private Financier | Experience: 3+ years
+- Current: Consultant at Fraze Software Solutions | Past: ASZ Technologies Pvt. Ltd. Bangalore (2022–2025)
+- Stack: C#, .NET 8, ASP.NET Core, JavaScript, TypeScript, Python, SQL Server, PostgreSQL, Azure, Docker, MinIO, Redis, MongoDB
+- Achievements: 10+ REST APIs for 5,000+ users, 50% query perf improvement, IoT modules for Singapore Senoko VMS
+- Trading: NSE/BSE equities, intraday & swing, technical analysis
+- Finance: Private lending — Rs.50K–Rs.50L, 3mo–3yr tenures
+- Contact: 1.saivenkatakrishnareddyp@gmail.com | +91-95818-98403
+
+Be helpful, concise, friendly. Keep answers under 120 words.`;
+
+    async function askGemini() {
+      if (localStorage.getItem('svk_asked_ai')) { showAnswered(); return; }
+
+      const q = document.getElementById('aiQuestion').value.trim();
+      if (!q) { document.getElementById('aiQuestion').focus(); return; }
+
+      if (!GEMINI_API_KEY || GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY_HERE') {
+        showAnswer('⚠️ Gemini API key not configured yet. Add your key to the GEMINI_API_KEY variable in the script tag.');
+        return;
+      }
+
+      document.getElementById('aiAskBtn').disabled = true;
+      document.getElementById('aiQuestion').disabled = true;
+      document.getElementById('aiThinking').classList.add('show');
+      document.getElementById('aiAnswerBox').classList.remove('show');
+
+      try {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: PROFILE_CONTEXT + '\n\nVisitor question: ' + q }] }] })
+          }
+        );
+        const data = await res.json();
+        const answer = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!answer) throw new Error('Empty response');
+
+        localStorage.setItem('svk_asked_ai', '1');
+        const qCount = parseInt(localStorage.getItem('svk_questions') || '0') + 1;
+        localStorage.setItem('svk_questions', qCount);
+        document.getElementById('totalQuestions').textContent = qCount;
+
+        showAnswer(answer);
+        setTimeout(() => { showAnswered(); }, 10000);
+
+      } catch (err) {
+        showAnswer('⚠️ Could not reach Gemini. Check your API key or network.\n' + err.message);
+        document.getElementById('aiAskBtn').disabled = false;
+        document.getElementById('aiQuestion').disabled = false;
+      } finally {
+        document.getElementById('aiThinking').classList.remove('show');
+      }
+    }
+
+    function showAnswer(txt) {
+      const b = document.getElementById('aiAnswerBox');
+      b.textContent = txt; b.classList.add('show');
+    }
+    function showAnswered() {
+      document.getElementById('aiInputArea').style.display = 'none';
+      document.getElementById('aiAnsweredNotice').style.display = 'block';
+    }
+    document.getElementById('aiQuestion').addEventListener('keydown', e => { if (e.key === 'Enter') askGemini(); });
+
+    /* ── CURSOR ────────────────────────────────── */
+    const cur = document.getElementById('cashCursor'), ring = document.getElementById('cashRing');
     let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cashCursor.style.left = mx + 'px';
-      cashCursor.style.top = my + 'px';
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
+    (function loop() { rx += (mx - rx) * .13; ry += (my - ry) * .13; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
+    document.querySelectorAll('a,button,.pillar,.skill-tag,.fi-item,.project-card,.trading-item').forEach(el => {
+      el.addEventListener('mouseenter', () => { cur.style.transform = 'translate(-4px,-4px) scale(1.45) rotate(-12deg)'; ring.style.opacity = '.7'; });
+      el.addEventListener('mouseleave', () => { cur.style.transform = 'translate(-4px,-4px) scale(1) rotate(0)'; ring.style.opacity = '.3'; });
     });
 
-    (function animateRing() {
-      rx += (mx - rx) * 0.13;
-      ry += (my - ry) * 0.13;
-      cashRing.style.left = rx + 'px';
-      cashRing.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    })();
+    /* ── SCROLL REVEAL ─────────────────────────── */
+    new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .08 })
+      .observe && document.querySelectorAll('.reveal').forEach(r => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .08 }).observe(r));
 
-    // Cursor Hover Effects
-    document.querySelectorAll('a, button, .pillar, .skill-tag, .fi-item, .project-card, .trading-item').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cashCursor.style.transform = 'translate(-4px,-4px) scale(1.45) rotate(-12deg)';
-        cashRing.style.opacity = '0.7';
-      });
-      el.addEventListener('mouseleave', () => {
-        cashCursor.style.transform = 'translate(-4px,-4px) scale(1) rotate(0deg)';
-        cashRing.style.opacity = '0.3';
-      });
-    });
-
-    // Scroll reveal
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
-
-    // Form Handling
+    /* ── CONTACT FORM ──────────────────────────── */
     function sendForm() {
-      const box = document.getElementById('messageBox');
-      box.style.display = 'block';
-      // Reset form
-      document.getElementById('userName').value = '';
-      document.getElementById('userEmail').value = '';
+      document.getElementById('messageBox').style.display = 'flex';
+      ['userName', 'userEmail', 'userMsg'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('userTopic').value = '';
-      document.getElementById('userMsg').value = '';
     }
+    function closeMsg() { document.getElementById('messageBox').style.display = 'none'; }
 
-    function closeMsg() {
-      document.getElementById('messageBox').style.display = 'none';
-    }
-
-    // Nav highlight
-    const allSections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    /* ── NAV HIGHLIGHT ─────────────────────────── */
+    const secs = document.querySelectorAll('section[id]'), nls = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
-      let current = '';
-      allSections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-      navLinks.forEach(l => {
-        l.style.color = l.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
-      });
+      let cur = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+      nls.forEach(l => { l.style.color = l.getAttribute('href') === '#' + cur ? 'var(--accent)' : ''; });
     });
+
+    /* ── LIVE MARKET TICKER ────────────────────── */
+    const TICKER_SYMBOLS = [
+      { sym: 'NIFTY 50', yahoo: '%5ENSEI' },
+      { sym: 'SENSEX', yahoo: '%5EBSESN' },
+      { sym: 'BANKNIFTY', yahoo: '%5ENSEBANK' },
+      { sym: 'USD/INR', yahoo: 'USDINR%3DX' },
+      { sym: 'NIFTY IT', yahoo: '%5ECNXIT' },
+      { sym: 'GOLD', yahoo: 'GC%3DF' },
+    ];
+
+    async function fetchTicker(symbol) {
+      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol.yahoo}?interval=1d&range=2d`;
+      const res = await fetch(url);
+      const data = await res.json();
+      const meta = data?.chart?.result?.[0]?.meta;
+      if (!meta) return null;
+      const price = meta.regularMarketPrice;
+      const prev = meta.chartPreviousClose || meta.previousClose;
+      const change = price - prev;
+      const pct = ((change / prev) * 100);
+      return { sym: symbol.sym, price, change, pct };
+    }
+
+    function formatPrice(p) {
+      if (p >= 1000) return p.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+      return p.toFixed(4);
+    }
+
+    async function loadLiveTicker() {
+      try {
+        const results = await Promise.allSettled(TICKER_SYMBOLS.map(fetchTicker));
+        const items = results
+          .filter(r => r.status === 'fulfilled' && r.value)
+          .map(r => r.value);
+
+        if (!items.length) return; // keep fallback text
+
+        // Build double set for seamless loop
+        const html = [...items, ...items].map(item => {
+          const up = item.change >= 0;
+          const arrow = up ? '▲' : '▼';
+          const cls = up ? 'up' : 'down';
+          const sign = up ? '+' : '';
+          return `<div class="ticker-item">
+          <span class="sym">${item.sym}</span>
+          <span class="val">&nbsp;${formatPrice(item.price)}&nbsp;</span>
+          <span class="${cls}">${arrow} ${sign}${item.pct.toFixed(2)}%</span>
+        </div>`;
+        }).join('');
+
+        document.getElementById('tickerInner').innerHTML = html;
+
+        // Refresh every 60 seconds
+        setTimeout(loadLiveTicker, 60000);
+      } catch (e) {
+        console.warn('Ticker fetch failed:', e);
+      }
+    }
+
+    loadLiveTicker();
+
+    /* ── INIT ──────────────────────────────────── */
+    initTracker();
+    if (localStorage.getItem('svk_asked_ai')) showAnswered();
   </script>
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "00a1aa637fa8473aaf6a873dbf96568f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 
 </html>
