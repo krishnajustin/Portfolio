@@ -1782,6 +1782,19 @@
   </footer>
 
   <script>
+
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      alert('Right click is disabled');
+      return false;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'F12') {
+        e.preventDefault();
+        alert('Developer tools are disabled');
+        return false;
+      }
+    });
     /* ── CONFIG: paste your Gemini API key here ── */
     const GEMINI_API_KEY = 'AIzaSyCGIdVKZT5JHL7TuhABt6nWsyZ61mlrOqY';
 
